@@ -41,7 +41,7 @@
 
       
         <div id="moduledoc" class="docstring">
-          <p>REST API client for Parse</p>
+          <p>REST API client for Parse in Elixir</p>
 <h2>Example usage</h2>
 <p>To get information about a class:</p>
 <pre><code>ParseClient.get(&quot;classes/Lumberjacks&quot;)</code></pre>
@@ -79,13 +79,22 @@ as the second argument:</p>
           <tr>
   <td class="summary_signature"><a href="#delete/1">delete(url)</a></td>
   
+    <td class="summary_synopsis"><p>Request to delete an object</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#get/1">get(url)</a></td>
   
+    <td class="summary_synopsis"><p>Get request for making queries</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#get/3">get(url, filters, options \\ %{})</a></td>
+  
+    <td class="summary_synopsis"><p>Get request for making queries. The queries can be filtered</p>
+</td>
   
 </tr>
 <tr>
@@ -106,6 +115,9 @@ Returns key or ArgumentError</p>
 <tr>
   <td class="summary_signature"><a href="#post/2">post(url, body)</a></td>
   
+    <td class="summary_synopsis"><p>Request to create an object</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#post_headers/0">post_headers()</a></td>
@@ -117,13 +129,22 @@ Returns key or ArgumentError</p>
 <tr>
   <td class="summary_signature"><a href="#put/2">put(url, body)</a></td>
   
+    <td class="summary_synopsis"><p>Request to update an object</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#query/1">query(url)</a></td>
   
+    <td class="summary_synopsis"><p>Get request for making queries. Just returns the body of the response</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#query/3">query(url, filters, options \\ %{})</a></td>
+  
+    <td class="summary_synopsis"><p>Get request for making queries with filters. Just returns the body of the response</p>
+</td>
   
 </tr>
 
@@ -145,9 +166,10 @@ Returns key or ArgumentError</p>
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Request to delete an object.</p>
+</div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L57" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L72" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -160,9 +182,10 @@ Returns key or ArgumentError</p>
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Get request for making queries.</p>
+</div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L49" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L52" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -175,9 +198,10 @@ Returns key or ArgumentError</p>
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Get request for making queries. The queries can be filtered.</p>
+</div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L51" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L57" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -193,7 +217,7 @@ Returns key or ArgumentError</p>
   <div class="docstring"><p>Headers for get and delete requests</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L83" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L104" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -210,7 +234,7 @@ Returns key or ArgumentError</p>
 Returns key or ArgumentError</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L69" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L90" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -223,9 +247,10 @@ Returns key or ArgumentError</p>
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Request to create an object.</p>
+</div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L53" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L62" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -241,7 +266,7 @@ Returns key or ArgumentError</p>
   <div class="docstring"><p>Headers for post and put requests</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L91" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L112" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -254,9 +279,10 @@ Returns key or ArgumentError</p>
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Request to update an object.</p>
+</div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L55" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L67" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -269,9 +295,10 @@ Returns key or ArgumentError</p>
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Get request for making queries. Just returns the body of the response.</p>
+</div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L59" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L77" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -284,9 +311,10 @@ Returns key or ArgumentError</p>
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Get request for making queries with filters. Just returns the body of the response.</p>
+</div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L61" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L82" class="view_source">Source</a>
   
 </div>
 
