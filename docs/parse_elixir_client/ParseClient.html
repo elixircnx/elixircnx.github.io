@@ -43,28 +43,17 @@
         <div id="moduledoc" class="docstring">
           <p>REST API client for Parse in Elixir</p>
 <h2>Example usage</h2>
-<p>To get information about a class:</p>
+<p>To get information about a class (and print out the whole response):</p>
 <pre><code>ParseClient.get(&quot;classes/Lumberjacks&quot;)</code></pre>
-<p>This command prints out the whole response.
-To just see the body, run the following command:</p>
+<p>To just see the body, use the <code class="inline">query</code> function:</p>
 <pre><code>ParseClient.query(&quot;classes/Lumberjacks&quot;)</code></pre>
-<p>To create a new object:</p>
-<pre><code>body = %{&quot;animal&quot; =&gt; &quot;parrot, &quot;name&quot; =&gt; &quot;NorwegianBlue&quot;, &quot;status&quot; =&gt; 0}
-ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
-<p>To update an object:</p>
-<pre><code>ParseClient.put(&quot;classes/Animals/12345678&quot;, %{&quot;status&quot; =&gt; 1})</code></pre>
-<p>To delete an object:</p>
-<pre><code>ParseClient.delete(&quot;classes/Animals/12345678&quot;)</code></pre>
+<p>To create a new object, use the <code class="inline">post</code> function, to update an object, use
+the <code class="inline">put</code> function, and to delete an object, use the <code class="inline">delete</code> function.</p>
 <h2>Use of filters when making queries</h2>
-<p>The following command will check for Animals that have a status of 1:</p>
-<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{&quot;status&quot; =&gt; 1})</code></pre>
-<p>And this command will do the same check and print the results in the order
-that the items were created (use <code class="inline">-createdAt</code> to view the results in
-descending order):</p>
-<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{&quot;status&quot; =&gt; 1}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
-<p>To view all results in the order that they were created, use an empty map
-as the second argument:</p>
-<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
+<p>Queries can be filtered by using <em>filters</em> and <em>options</em>.</p>
+<p>Use filters when you would use <code class="inline">where=</code> clauses in a request to the Parse API.
+Options include “order”, “limit”, “count” and “include”.</p>
+<p>Both filters and options need to be Elixir maps.</p>
 
         </div>
       
@@ -98,31 +87,9 @@ as the second argument:</p>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#get_headers/0">get_headers()</a></td>
-  
-    <td class="summary_synopsis"><p>Headers for get and delete requests</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#get_system_variable/1">get_system_variable(variable)</a></td>
-  
-    <td class="summary_synopsis"><p>Grabs PARSE_APPLICATION_ID and PARSE_API_KEY from system ENV
-Returns key or ArgumentError</p>
-</td>
-  
-</tr>
-<tr>
   <td class="summary_signature"><a href="#post/2">post(url, body)</a></td>
   
     <td class="summary_synopsis"><p>Request to create an object</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#post_headers/0">post_headers()</a></td>
-  
-    <td class="summary_synopsis"><p>Headers for post and put requests</p>
 </td>
   
 </tr>
@@ -143,7 +110,8 @@ Returns key or ArgumentError</p>
 <tr>
   <td class="summary_signature"><a href="#query/3">query(url, filters, options \\ %{})</a></td>
   
-    <td class="summary_synopsis"><p>Get request for making queries with filters. Just returns the body of the response</p>
+    <td class="summary_synopsis"><p>Get request for making queries with filters and options.
+Just returns the body of the response</p>
 </td>
   
 </tr>
@@ -167,9 +135,11 @@ Returns key or ArgumentError</p>
   </div>
   
   <div class="docstring"><p>Request to delete an object.</p>
+<h2>Example</h2>
+<pre><code>ParseClient.delete(&quot;classes/Animals/12345678&quot;)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L72" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L70" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -185,7 +155,7 @@ Returns key or ArgumentError</p>
   <div class="docstring"><p>Get request for making queries.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L52" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L34" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -201,40 +171,7 @@ Returns key or ArgumentError</p>
   <div class="docstring"><p>Get request for making queries. The queries can be filtered.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L57" class="view_source">Source</a>
-  
-</div>
-<div class="detail">
-  <div class="detail_header" id="get_headers/0">
-    <span class="signature"><strong>get_headers()</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#get_headers/0" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <div class="docstring"><p>Headers for get and delete requests</p>
-</div>
-  
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L104" class="view_source">Source</a>
-  
-</div>
-<div class="detail">
-  <div class="detail_header" id="get_system_variable/1">
-    <span class="signature"><strong>get_system_variable(variable)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#get_system_variable/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <div class="docstring"><p>Grabs PARSE_APPLICATION_ID and PARSE_API_KEY from system ENV
-Returns key or ArgumentError</p>
-</div>
-  
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L90" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L39" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -248,25 +185,12 @@ Returns key or ArgumentError</p>
   </div>
   
   <div class="docstring"><p>Request to create an object.</p>
+<h2>Example</h2>
+<pre><code>body = %{&quot;animal&quot; =&gt; &quot;parrot, &quot;name&quot; =&gt; &quot;NorwegianBlue&quot;, &quot;status&quot; =&gt; 0}
+ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L62" class="view_source">Source</a>
-  
-</div>
-<div class="detail">
-  <div class="detail_header" id="post_headers/0">
-    <span class="signature"><strong>post_headers()</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#post_headers/0" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <div class="docstring"><p>Headers for post and put requests</p>
-</div>
-  
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L112" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L50" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -280,9 +204,11 @@ Returns key or ArgumentError</p>
   </div>
   
   <div class="docstring"><p>Request to update an object.</p>
+<h2>Example</h2>
+<pre><code>ParseClient.put(&quot;classes/Animals/12345678&quot;, %{&quot;status&quot; =&gt; 1})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L67" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L60" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -298,7 +224,7 @@ Returns key or ArgumentError</p>
   <div class="docstring"><p>Get request for making queries. Just returns the body of the response.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L77" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L75" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -311,10 +237,21 @@ Returns key or ArgumentError</p>
     </div>
   </div>
   
-  <div class="docstring"><p>Get request for making queries with filters. Just returns the body of the response.</p>
+  <div class="docstring"><p>Get request for making queries with filters and options.
+Just returns the body of the response.</p>
+<h2>Examples</h2>
+<p>The following command will check for Animals that have a status of 1:</p>
+<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{&quot;status&quot; =&gt; 1})</code></pre>
+<p>And this command will do the same check and print the results in the order
+that the items were created (use <code class="inline">-createdAt</code> to view the results in
+descending order):</p>
+<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{&quot;status&quot; =&gt; 1}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
+<p>To view all results in the order that they were created, use an empty map
+as the second argument:</p>
+<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L82" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L98" class="view_source">Source</a>
   
 </div>
 

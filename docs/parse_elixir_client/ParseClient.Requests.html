@@ -43,7 +43,8 @@
 
       
         <div id="moduledoc" class="docstring">
-          <p>Handles the requests for ParseClient</p>
+          <p>Handles the requests for ParseClient.</p>
+<p>Uses HTTPoison.</p>
 
         </div>
       
@@ -97,41 +98,21 @@
   <td class="summary_signature"><a href="#process_request_body/1">process_request_body(body)</a></td>
   
     <td class="summary_synopsis"><p>Encodes the body and raises an error if it cannot be encoded</p>
-<h2>Example</h2>
-<pre><code>iex&gt; body = %{&quot;job&quot; =&gt; &quot;Lumberjack&quot;, &quot;clothes&quot; =&gt; &quot;stockings&quot;}
-iex&gt; ParseClient.Requests.process_request_body(body)
-~S({&quot;clothes&quot;:&quot;stockings&quot;,&quot;job&quot;:&quot;Lumberjack&quot;})</code></pre>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#process_response_body/1">process_response_body(body)</a></td>
   
-    <td class="summary_synopsis"><p>Checks that the body can be decoded and handles any errors
-Converts binary response keys to atoms
-Args:</p>
-<ul>
-<li>body - string binary response
-Returns Record or ArgumentError
-</li>
-</ul>
-<h2>Example</h2>
-<pre><code>iex&gt; body = ~S({&quot;score&quot;:1337,&quot;objectId&quot;:&quot;sOxpug2373&quot;,&quot;playerName&quot;:&quot;Sean Plott&quot;})
-iex&gt; ParseClient.Requests.process_response_body(body)
-%{score: 1337, objectId: &quot;sOxpug2373&quot;, playerName: &quot;Sean Plott&quot;}</code></pre>
+    <td class="summary_synopsis"><p>Checks that the body can be decoded and handles any errors.
+Converts binary response keys to atoms</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#process_url/1">process_url(endpoint)</a></td>
   
-    <td class="summary_synopsis"><p>Creates the URL for an endpoint
-Args:</p>
-<ul>
-<li>endpoint - part of the API we’re hitting
-Returns string
-</li>
-</ul>
+    <td class="summary_synopsis"><p>Creates the URL for an endpoint (query)</p>
 </td>
   
 </tr>
@@ -214,7 +195,7 @@ Raises  HTTPoison.HTTPError if failed
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -236,7 +217,7 @@ Raises  HTTPoison.HTTPError if failed
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -250,13 +231,14 @@ Raises  HTTPoison.HTTPError if failed
   </div>
   
   <div class="docstring"><p>Get request with filters.</p>
-<p>Filters is a map that is used to make a <code class="inline">where={}</code> query.
-Options is also a map. Options include “order”, “limit”, “count” and “include”.</p>
+<h2>Examples</h2>
+<p>To make a query just about animals that have a name and are still alive:</p>
+<pre><code>ParseClient.get(&quot;classes/Animals&quot;, %{&quot;name&quot; =&gt; %{&quot;$exists&quot; =&gt; true}, &quot;status&quot; =&gt; 1})</code></pre>
 <p>To make a request with options, but no filters, use %{} as the second argument:</p>
 <pre><code>ParseClient.get(&quot;classes/Animals&quot;, %{}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L80" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L87" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -278,7 +260,7 @@ Options is also a map. Options include “order”, “limit”, “count” and
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -300,7 +282,7 @@ Options is also a map. Options include “order”, “limit”, “count” and
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -316,7 +298,7 @@ Options is also a map. Options include “order”, “limit”, “count” and
   <div class="docstring"><p>Parse options in the query.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L55" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L59" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -338,7 +320,7 @@ Options is also a map. Options include “order”, “limit”, “count” and
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -360,7 +342,7 @@ Options is also a map. Options include “order”, “limit”, “count” and
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -373,14 +355,14 @@ Options is also a map. Options include “order”, “limit”, “count” and
     </div>
   </div>
   
-  <div class="docstring"><p>Encodes the body and raises an error if it cannot be encoded</p>
+  <div class="docstring"><p>Encodes the body and raises an error if it cannot be encoded.</p>
 <h2>Example</h2>
 <pre><code>iex&gt; body = %{&quot;job&quot; =&gt; &quot;Lumberjack&quot;, &quot;clothes&quot; =&gt; &quot;stockings&quot;}
-iex&gt; ParseClient.Requests.process_request_body(body)
+...&gt; ParseClient.Requests.process_request_body(body)
 ~S({&quot;clothes&quot;:&quot;stockings&quot;,&quot;job&quot;:&quot;Lumberjack&quot;})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L32" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L34" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -393,21 +375,15 @@ iex&gt; ParseClient.Requests.process_request_body(body)
     </div>
   </div>
   
-  <div class="docstring"><p>Checks that the body can be decoded and handles any errors
-Converts binary response keys to atoms
-Args:</p>
-<ul>
-<li>body - string binary response
-Returns Record or ArgumentError
-</li>
-</ul>
+  <div class="docstring"><p>Checks that the body can be decoded and handles any errors.
+Converts binary response keys to atoms.</p>
 <h2>Example</h2>
-<pre><code>iex&gt; body = ~S({&quot;score&quot;:1337,&quot;objectId&quot;:&quot;sOxpug2373&quot;,&quot;playerName&quot;:&quot;Sean Plott&quot;})
-iex&gt; ParseClient.Requests.process_response_body(body)
-%{score: 1337, objectId: &quot;sOxpug2373&quot;, playerName: &quot;Sean Plott&quot;}</code></pre>
+<pre><code>iex&gt; body = ~S({&quot;score&quot;:42,&quot;objectId&quot;:&quot;sOxpug2373&quot;,&quot;playerName&quot;:&quot;Tommy&quot;})
+...&gt; ParseClient.Requests.process_response_body(body)
+%{score: 42, objectId: &quot;sOxpug2373&quot;, playerName: &quot;Tommy&quot;}</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L45" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L46" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -420,16 +396,10 @@ iex&gt; ParseClient.Requests.process_response_body(body)
     </div>
   </div>
   
-  <div class="docstring"><p>Creates the URL for an endpoint
-Args:</p>
-<ul>
-<li>endpoint - part of the API we’re hitting
-Returns string
-</li>
-</ul>
+  <div class="docstring"><p>Creates the URL for an endpoint (query).</p>
 <h2>Example</h2>
 <pre><code>iex&gt; endpoint = &quot;classes/GameScore&quot;
-iex&gt; ParseClient.Requests.process_url(endpoint)
+...&gt; ParseClient.Requests.process_url(endpoint)
 &quot;https://api.parse.com/1/classes/GameScore&quot;</code></pre>
 </div>
   
@@ -455,7 +425,7 @@ iex&gt; ParseClient.Requests.process_url(endpoint)
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -496,7 +466,7 @@ Raises  HTTPoison.HTTPError if failed.
 </ul>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -512,7 +482,7 @@ Raises  HTTPoison.HTTPError if failed.
   <div class="docstring"><p>Start httpoison and dependecies.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -534,7 +504,7 @@ Raises  HTTPoison.HTTPError if failed.
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L6" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
   
 </div>
 
