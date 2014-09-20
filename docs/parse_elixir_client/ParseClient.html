@@ -20,7 +20,7 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Parse Client v0.1.1-dev &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a></div>
+      <div class="breadcrumbs">Parse Client v0.1.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a></div>
 
       <h1>
         ParseClient
@@ -54,6 +54,57 @@ the <code class="inline">put</code> function, and to delete an object, use the <
 <p>Use filters when you would use <code class="inline">where=</code> clauses in a request to the Parse API.
 Options include “order”, “limit”, “count” and “include”.</p>
 <p>Both filters and options need to be Elixir maps.</p>
+<h2>Comparisons in filters</h2>
+<p>The following filters (keys) from Parse.com are supported:</p>
+<table>
+<colgroup>
+<col align="left">
+<col align="left">
+</colgroup>
+<thead>
+<tr>
+<th>Key</th><th>Operation</th>
+</tr>
+</thead>
+<tr>
+<td>$lt</td><td>Less than</td>
+</tr>
+<tr>
+<td>$lte</td><td>Less than or equal to</td>
+</tr>
+<tr>
+<td>$gt</td><td>Greater than</td>
+</tr>
+<tr>
+<td>$gte</td><td>Greater than or equal to</td>
+</tr>
+<tr>
+<td>$ne</td><td>Not equal to</td>
+</tr>
+<tr>
+<td>$in</td><td>Contained in</td>
+</tr>
+<tr>
+<td>$nin</td><td>Not contained in</td>
+</tr>
+<tr>
+<td>$exists</td><td>A value is set for the key</td>
+</tr>
+<tr>
+<td>$select</td><td>This matches a value for a key in the result of a different query</td>
+</tr>
+<tr>
+<td>$dontSelect</td><td>Requires that a key’s value not match a value for a key in the result of a different query</td>
+</tr>
+<tr>
+<td>$all</td><td>Contains all of the given values</td>
+</tr>
+</table>
+<h3>Examples</h3>
+<p>To make a query just about animals that are aged less then 3 years old:</p>
+<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{&quot;age&quot; =&gt; %{&quot;$lt&quot; =&gt; 3}})</code></pre>
+<p>To make a query just about animals who have a name and are still alive:</p>
+<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{&quot;name&quot; =&gt; %{&quot;$exists&quot; =&gt; true}, &quot;status&quot; =&gt; 1})</code></pre>
 
         </div>
       
@@ -139,7 +190,7 @@ Just returns the body of the response</p>
 <pre><code>ParseClient.delete(&quot;classes/Animals/12345678&quot;)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L70" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L98" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -155,7 +206,7 @@ Just returns the body of the response</p>
   <div class="docstring"><p>Get request for making queries.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L34" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L62" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -171,7 +222,7 @@ Just returns the body of the response</p>
   <div class="docstring"><p>Get request for making queries. The queries can be filtered.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L39" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L67" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -190,7 +241,7 @@ Just returns the body of the response</p>
 ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L50" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L78" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -208,7 +259,7 @@ ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
 <pre><code>ParseClient.put(&quot;classes/Animals/12345678&quot;, %{&quot;status&quot; =&gt; 1})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L60" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L88" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -224,7 +275,7 @@ ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
   <div class="docstring"><p>Get request for making queries. Just returns the body of the response.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L75" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L103" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -251,7 +302,7 @@ as the second argument:</p>
 <pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L98" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L126" class="view_source">Source</a>
   
 </div>
 

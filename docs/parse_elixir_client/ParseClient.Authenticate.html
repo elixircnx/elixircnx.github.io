@@ -20,7 +20,7 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Parse Client v0.1.1-dev &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a> &rarr; <a href="ParseClient.Authenticate.html">Authenticate</a></div>
+      <div class="breadcrumbs">Parse Client v0.1.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a> &rarr; <a href="ParseClient.Authenticate.html">Authenticate</a></div>
 
       <h1>
         ParseClient.Authenticate
@@ -49,10 +49,18 @@
         <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
         <table class="summary">
           <tr>
-  <td class="summary_signature"><a href="#get_sysvar/1">get_sysvar(variable)</a></td>
+  <td class="summary_signature"><a href="#config_parse_id/0">config_parse_id()</a></td>
   
-    <td class="summary_synopsis"><p>Grabs PARSE_APPLICATION_ID and PARSE_API_KEY from the system environment.
-Returns key or ArgumentError</p>
+    <td class="summary_synopsis"><p>Grabs parse_application_id from environment config file.
+Returns string or ArgumentError</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#config_parse_key/0">config_parse_key()</a></td>
+  
+    <td class="summary_synopsis"><p>Grabs parse_api_key from environment config file.
+Returns string or ArgumentError</p>
 </td>
   
 </tr>
@@ -66,20 +74,37 @@ Returns key or ArgumentError</p>
         <div id="functions_details" class="details_list">
           <h2>Functions</h2>
           <div class="detail">
-  <div class="detail_header" id="get_sysvar/1">
-    <span class="signature"><strong>get_sysvar(variable)</strong></span>
+  <div class="detail_header" id="config_parse_id/0">
+    <span class="signature"><strong>config_parse_id()</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#get_sysvar/1" class="detail_link" title="Link to this function">#</a>
+      <a href="#config_parse_id/0" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
-  <div class="docstring"><p>Grabs PARSE_APPLICATION_ID and PARSE_API_KEY from the system environment.
-Returns key or ArgumentError.</p>
+  <div class="docstring"><p>Grabs parse_application_id from environment config file.
+Returns string or ArgumentError.</p>
 </div>
   
     <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/authenticate.ex#L7" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="config_parse_key/0">
+    <span class="signature"><strong>config_parse_key()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#config_parse_key/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Grabs parse_api_key from environment config file.
+Returns string or ArgumentError.</p>
+</div>
+  
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/authenticate.ex#L16" class="view_source">Source</a>
   
 </div>
 
