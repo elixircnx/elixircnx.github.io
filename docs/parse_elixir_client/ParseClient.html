@@ -20,7 +20,7 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Parse Client v0.1.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a></div>
+      <div class="breadcrumbs">Parse Client v0.2.0 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a></div>
 
       <h1>
         ParseClient
@@ -133,7 +133,15 @@ Options include “order”, “limit”, “count” and “include”.</p>
 <tr>
   <td class="summary_signature"><a href="#get/3">get(url, filters, options \\ %{})</a></td>
   
-    <td class="summary_synopsis"><p>Get request for making queries. The queries can be filtered</p>
+    <td class="summary_synopsis"><p>Get request with filters</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#login/2">login(username, password)</a></td>
+  
+    <td class="summary_synopsis"><p>Request from a user to login. Username and password are required.
+As in the signup function, username and password needs to be strings</p>
 </td>
   
 </tr>
@@ -166,6 +174,37 @@ Just returns the body of the response</p>
 </td>
   
 </tr>
+<tr>
+  <td class="summary_signature"><a href="#request_passwd_reset/1">request_passwd_reset(email)</a></td>
+  
+    <td class="summary_synopsis"><p>Request to reset a user’s password</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#signup/3">signup(username, password, options \\ %{})</a></td>
+  
+    <td class="summary_synopsis"><p>Request from a user to signup. The user must provide a username
+and a password. The options argument refers to additional information,
+such as email address or phone number, and it needs to be in the form
+of an Elixir map</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#upload_file/3">upload_file(url, contents, content_type)</a></td>
+  
+    <td class="summary_synopsis"><p>Post request to upload a file</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#validate_user/1">validate_user(token_val)</a></td>
+  
+    <td class="summary_synopsis"><p>Validates the user. Takes the user’s session token as the only argument</p>
+</td>
+  
+</tr>
 
         </table>
       
@@ -190,7 +229,7 @@ Just returns the body of the response</p>
 <pre><code>ParseClient.delete(&quot;classes/Animals/12345678&quot;)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L98" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L124" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -219,10 +258,32 @@ Just returns the body of the response</p>
     </div>
   </div>
   
-  <div class="docstring"><p>Get request for making queries. The queries can be filtered.</p>
+  <div class="docstring"><p>Get request with filters.</p>
+<h2>Examples</h2>
+<p>To make a query just about animals that have a name and are still alive:</p>
+<pre><code>ParseClient.get(&quot;classes/Animals&quot;, %{&quot;name&quot; =&gt; %{&quot;$exists&quot; =&gt; true}, &quot;status&quot; =&gt; 1})</code></pre>
+<p>To make a request with options, but no filters, use %{} as the second argument:</p>
+<pre><code>ParseClient.get(&quot;classes/Animals&quot;, %{}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L67" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L77" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="login/2">
+    <span class="signature"><strong>login(username, password)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#login/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Request from a user to login. Username and password are required.
+As in the signup function, username and password needs to be strings.</p>
+</div>
+  
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L147" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -241,7 +302,7 @@ Just returns the body of the response</p>
 ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L78" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L104" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -259,7 +320,7 @@ ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
 <pre><code>ParseClient.put(&quot;classes/Animals/12345678&quot;, %{&quot;status&quot; =&gt; 1})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L88" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L114" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -275,7 +336,7 @@ ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
   <div class="docstring"><p>Get request for making queries. Just returns the body of the response.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L103" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L85" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -290,19 +351,83 @@ ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
   
   <div class="docstring"><p>Get request for making queries with filters and options.
 Just returns the body of the response.</p>
-<h2>Examples</h2>
-<p>The following command will check for Animals that have a status of 1:</p>
-<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{&quot;status&quot; =&gt; 1})</code></pre>
-<p>And this command will do the same check and print the results in the order
-that the items were created (use <code class="inline">-createdAt</code> to view the results in
-descending order):</p>
-<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{&quot;status&quot; =&gt; 1}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
-<p>To view all results in the order that they were created, use an empty map
-as the second argument:</p>
-<pre><code>ParseClient.query(&quot;classes/Animals&quot;, %{}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L126" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L91" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="request_passwd_reset/1">
+    <span class="signature"><strong>request_passwd_reset(email)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#request_passwd_reset/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Request to reset a user’s password.</p>
+<h2>Example</h2>
+<pre><code>ParseClient.request_passwd_reset(&quot;example@example.com&quot;)</code></pre>
+</div>
+  
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L159" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="signup/3">
+    <span class="signature"><strong>signup(username, password, options \\ %{})</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#signup/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Request from a user to signup. The user must provide a username
+and a password. The options argument refers to additional information,
+such as email address or phone number, and it needs to be in the form
+of an Elixir map.</p>
+<h2>Examples</h2>
+<pre><code>ParseClient.signup(&quot;Duchamp&quot;, &quot;L_H;OO#Q&quot;)
+ParseClient.signup(&quot;Duchamp&quot;, &quot;L_H;OO#Q&quot;, %{&quot;email&quot; =&gt; &quot;eros@selavy.com&quot;})</code></pre>
+</div>
+  
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L138" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="upload_file/3">
+    <span class="signature"><strong>upload_file(url, contents, content_type)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#upload_file/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Post request to upload a file.</p>
+</div>
+  
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L178" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="validate_user/1">
+    <span class="signature"><strong>validate_user(token_val)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#validate_user/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Validates the user. Takes the user’s session token as the only argument.</p>
+<h2>Example</h2>
+<pre><code>ParseClient.validate_user(&quot;12345678&quot;)</code></pre>
+</div>
+  
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L171" class="view_source">Source</a>
   
 </div>
 

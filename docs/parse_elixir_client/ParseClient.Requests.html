@@ -20,7 +20,7 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Parse Client v0.1.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a> &rarr; <a href="ParseClient.Requests.html">Requests</a></div>
+      <div class="breadcrumbs">Parse Client v0.2.0 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a> &rarr; <a href="ParseClient.Requests.html">Requests</a></div>
 
       <h1>
         ParseClient.Requests
@@ -62,13 +62,6 @@
 </tr>
 <tr>
   <td class="summary_signature"><a href="#get/3">get(url, headers \\ [], options \\ [])</a></td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#get/4">get(url, filters, options, headers)</a></td>
-  
-    <td class="summary_synopsis"><p>Get request with filters</p>
-</td>
   
 </tr>
 <tr>
@@ -218,27 +211,6 @@ Raises  HTTPoison.HTTPError if failed
   <div class="docstring"></div>
   
     <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L8" class="view_source">Source</a>
-  
-</div>
-<div class="detail">
-  <div class="detail_header" id="get/4">
-    <span class="signature"><strong>get(url, filters, options, headers)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#get/4" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <div class="docstring"><p>Get request with filters.</p>
-<h2>Examples</h2>
-<p>To make a query just about animals that have a name and are still alive:</p>
-<pre><code>ParseClient.get(&quot;classes/Animals&quot;, %{&quot;name&quot; =&gt; %{&quot;$exists&quot; =&gt; true}, &quot;status&quot; =&gt; 1})</code></pre>
-<p>To make a request with options, but no filters, use %{} as the second argument:</p>
-<pre><code>ParseClient.get(&quot;classes/Animals&quot;, %{}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
-</div>
-  
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client/requests.ex#L87" class="view_source">Source</a>
   
 </div>
 <div class="detail">
