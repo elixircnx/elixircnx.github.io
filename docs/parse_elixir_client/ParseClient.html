@@ -20,7 +20,7 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Parse Client v0.2.0 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a></div>
+      <div class="breadcrumbs">Parse Client v0.2.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ParseClient.html">ParseClient</a></div>
 
       <h1>
         ParseClient
@@ -43,12 +43,13 @@
         <div id="moduledoc" class="docstring">
           <p>REST API client for Parse in Elixir</p>
 <h2>Example usage</h2>
-<p>To get information about a class (and print out the whole response):</p>
+<p>To get information about an object (and print out the whole response):</p>
 <pre><code>ParseClient.get(&quot;classes/Lumberjacks&quot;)</code></pre>
 <p>To just see the body, use the <code class="inline">query</code> function:</p>
 <pre><code>ParseClient.query(&quot;classes/Lumberjacks&quot;)</code></pre>
 <p>To create a new object, use the <code class="inline">post</code> function, to update an object, use
 the <code class="inline">put</code> function, and to delete an object, use the <code class="inline">delete</code> function.</p>
+<p>The <code class="inline">get</code> and <code class="inline">query</code> methods can also be used with users and roles.</p>
 <h2>Use of filters when making queries</h2>
 <p>Queries can be filtered by using <em>filters</em> and <em>options</em>.</p>
 <p>Use filters when you would use <code class="inline">where=</code> clauses in a request to the Parse API.
@@ -120,6 +121,13 @@ Options include “order”, “limit”, “count” and “include”.</p>
   <td class="summary_signature"><a href="#delete/1">delete(url)</a></td>
   
     <td class="summary_synopsis"><p>Request to delete an object</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#delete_user/2">delete_user(objectid, token_val)</a></td>
+  
+    <td class="summary_synopsis"><p>Deletes the user. Takes the user’s objectid and session token as arguments</p>
 </td>
   
 </tr>
@@ -229,7 +237,25 @@ of an Elixir map</p>
 <pre><code>ParseClient.delete(&quot;classes/Animals/12345678&quot;)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L124" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L123" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="delete_user/2">
+    <span class="signature"><strong>delete_user(objectid, token_val)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#delete_user/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Deletes the user. Takes the user’s objectid and session token as arguments.</p>
+<h2>Example</h2>
+<pre><code>ParseClient.delete_user(&quot;g7y9tkhB7O&quot;, &quot;12345678&quot;)</code></pre>
+</div>
+  
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L179" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -245,7 +271,7 @@ of an Elixir map</p>
   <div class="docstring"><p>Get request for making queries.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L62" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L64" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -266,7 +292,7 @@ of an Elixir map</p>
 <pre><code>ParseClient.get(&quot;classes/Animals&quot;, %{}, %{&quot;order&quot; =&gt; &quot;createdAt&quot;})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L77" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L79" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -283,7 +309,7 @@ of an Elixir map</p>
 As in the signup function, username and password needs to be strings.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L147" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L145" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -302,7 +328,7 @@ As in the signup function, username and password needs to be strings.</p>
 ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L104" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L105" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -336,7 +362,7 @@ ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
   <div class="docstring"><p>Get request for making queries. Just returns the body of the response.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L85" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L87" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -353,7 +379,7 @@ ParseClient.post(&quot;classes/Animals&quot;, body)</code></pre>
 Just returns the body of the response.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L91" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L93" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -371,7 +397,7 @@ Just returns the body of the response.</p>
 <pre><code>ParseClient.request_passwd_reset(&quot;example@example.com&quot;)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L159" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L157" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -393,7 +419,7 @@ of an Elixir map.</p>
 ParseClient.signup(&quot;Duchamp&quot;, &quot;L_H;OO#Q&quot;, %{&quot;email&quot; =&gt; &quot;eros@selavy.com&quot;})</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L138" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L136" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -409,7 +435,7 @@ ParseClient.signup(&quot;Duchamp&quot;, &quot;L_H;OO#Q&quot;, %{&quot;email&quot
   <div class="docstring"><p>Post request to upload a file.</p>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L178" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L186" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -427,7 +453,7 @@ ParseClient.signup(&quot;Duchamp&quot;, &quot;L_H;OO#Q&quot;, %{&quot;email&quot
 <pre><code>ParseClient.validate_user(&quot;12345678&quot;)</code></pre>
 </div>
   
-    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L171" class="view_source">Source</a>
+    <a href="https://github.com/elixircnx/parse_elixir_client/blob/master/lib/parse_elixir_client.ex#L168" class="view_source">Source</a>
   
 </div>
 
